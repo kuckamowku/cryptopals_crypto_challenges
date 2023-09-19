@@ -3,8 +3,8 @@ from Crypto.Cipher import AES
 
 def b64_decode_to_bytes(text: str) -> bytes:
     return base64.b64decode(text)
-
-
+    
+#Зашифрованный текст
 text = """CRIwqt4+szDbqkNY+I0qbDe3LQz0wiw0SuxBQtAM5TDdMbjCMD/venUDW9BL
 PEXODbk6a48oMbAY6DDZsuLbc0uR9cp9hQ0QQGATyyCESq2NSsvhx5zKlLtz
 dsnfK5ED5srKjK7Fz4Q38/ttd+stL/9WnDzlJvAo7WBsjI5YJc2gmAYayNfm
@@ -69,7 +69,10 @@ RA3PIfmvGfMUGFVWlyS7+O73l5oIJHxuaJrR4EenzAu4Avpa5d+VuiYbM10a
 LaVegVPvFn4pCP4U/Nbbw4OTCFX2HKmWEiVBB0O3J9xwXWpxN1Vr5CDi75Fq
 NhxYCjgSJzWOUD34Y1dAfcj57VINmQVEWyc8Tch8vg9MnHGCOfOjRqp0VGyA
 S15AVD2QS1V6fhRimJSVyT6QuGb8tKRsl2N+a2Xze36vgMhw7XK7zh//jC2H"""
+
+#Декодируем из base64
 text = b64_decode_to_bytes(text)
 key = b"YELLOW SUBMARINE"
+#И расшифровываем по алгоритму AES_ECB
 cipher = AES.new(key, AES.MODE_ECB)
 print(cipher.decrypt(text))
